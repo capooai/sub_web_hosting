@@ -1,0 +1,13 @@
+# CloudflareSub PHP — Apache URL 重写规则
+RewriteEngine On
+
+# 如果请求的是真实文件，直接返回
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 如果请求的是真实目录，直接返回
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 所有其他请求转发到 index.php
+RewriteRule ^ index.php [L]
